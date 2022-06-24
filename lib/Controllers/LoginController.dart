@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:chequewallet/Model/UserModel.dart';
+import 'package:chequewallet/ShrefPref/Prefs.dart';
 import 'package:chequewallet/Views/Dashboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -10,7 +11,7 @@ import 'package:get/get.dart';
 import '../Validation/Validation.dart';
 import '../Views/Email_Sent.dart';
 
-var userModel=UserModel(fname: "", lname: "", dob: "", transpass: "", email: "").obs;
+var userModel=UserModel(fname: "", lname: "", dob: "", transpass: "", email: "",ismpass: false,mpass: "").obs;
 class LoginController extends GetxController
 {
   var isLoading=false.obs;
@@ -37,7 +38,6 @@ class LoginController extends GetxController
             await FirebaseAuth.instance.currentUser!.sendEmailVerification();
             Get.offAll(()=>EmailSent());
           }
-
         }
     }catch(e)
     {

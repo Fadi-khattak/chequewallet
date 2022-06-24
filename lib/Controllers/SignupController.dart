@@ -65,6 +65,8 @@ class SignupController extends GetxController
         'dob':Dob,
         'email':email,
         'transpass':encpass,
+        'ismpass':false,
+        'mpass':"",
       };
       await ref.child(FirebaseAuth.instance.currentUser!.uid).set(payload);
       isLoading.value=false;
